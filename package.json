@@ -1,0 +1,4 @@
+{
+  "private": true,
+  "scripts": {"dev": "echo \"No frontend build required — assets are served directly.\"", "build": "echo \"Magic Code assets ready.\""}
+}
