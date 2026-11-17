@@ -36,6 +36,9 @@
 
     <div class="noise" aria-hidden="true"></div>
 
+    {{-- Magic Starfield Canvas (behind everything, pointer-events: none) --}}
+    <canvas id="magicStarfield" aria-hidden="true"></canvas>
+
     @include('partials.header')
 
     <main id="mainContent">
@@ -66,6 +69,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/magic-code.js') }}" defer></script>
+    <script src="{{ asset('js/magic-starfield.js') }}" defer></script>
     @stack('scripts')
 </body>
 </html>

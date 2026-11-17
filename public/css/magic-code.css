@@ -20,6 +20,18 @@
     --green-hover: #48e632;
     --green-glow: rgba(53, 213, 31, 0.16);
     --green-subtle: rgba(53, 213, 31, 0.08);
+    /* Luxury Champagne & Amber Gold Gradient Tokens (Trust & High-Converting Accent) */
+    --gold-light: #FFFBF6;
+    --gold-cream: #FEEDD3;
+    --gold-champagne: #FDDAA5;
+    --gold-honey: #FBC676;
+    --gold-amber: #FAB347;
+    --gold-deep: #F9A424;
+    --gold-gradient: linear-gradient(90deg, #FFFBF6 0%, #FEEDD3 18%, #FDDAA5 40%, #FBC676 68%, #FAB347 85%, #F9A424 100%);
+    --gold-gradient-hover: linear-gradient(90deg, #FFFFFF 0%, #FFF3E4 18%, #FEE0B4 40%, #FCCF89 68%, #FBBA59 85%, #FAAB32 100%);
+    --gold-text: #120c02;
+    --gold-glow: rgba(249, 164, 36, 0.35);
+    --gold-glow-hover: rgba(249, 164, 36, 0.55);
     --error: #ff5555;
     --error-bg: rgba(255, 85, 85, 0.08);
     --max-width: 1180px;
@@ -196,14 +208,23 @@ body {
 }
 
 .nav-cta {
-    border: 1px solid #2b2b2b !important;
-    padding: 10px 18px !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    padding: 10px 20px !important;
     border-radius: var(--radius-full) !important;
-    background: #0d0d0d !important;
-    color: #f0f0f0 !important;
+    background: var(--gold-gradient) !important;
+    color: var(--gold-text) !important;
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    font-weight: 800 !important;
+    font-size: 13px !important;
+    letter-spacing: -0.01em;
+    box-shadow: 
+        0 4px 18px var(--gold-glow),
+        inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    position: relative;
+    overflow: hidden;
 }
 
 .nav-cta::after {
@@ -211,13 +232,24 @@ body {
 }
 
 .nav-cta:hover, .nav-cta.active-cta {
-    border-color: var(--green) !important;
-    color: #fff !important;
-    box-shadow: 0 0 15px rgba(53, 213, 31, 0.2);
+    background: var(--gold-gradient-hover) !important;
+    border-color: rgba(255, 255, 255, 0.95) !important;
+    color: var(--gold-text) !important;
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 28px var(--gold-glow-hover),
+        inset 0 1px 2px #ffffff !important;
 }
 
 .nav-cta span {
-    color: var(--green);
+    color: var(--gold-text) !important;
+    font-weight: 800;
+    transition: transform 0.25s ease;
+    display: inline-block;
+}
+
+.nav-cta:hover span {
+    transform: translate(2px, -2px);
 }
 
 /* Mobile Toggle */
@@ -286,9 +318,14 @@ body {
 
 .mobile-cta {
     margin-top: 10px;
-    border: 1px solid var(--green);
-    color: var(--green) !important;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: var(--gold-gradient) !important;
+    color: var(--gold-text) !important;
+    font-weight: 800 !important;
+    border-radius: var(--radius-full) !important;
+    box-shadow: 0 6px 20px var(--gold-glow);
     text-align: center;
+    padding: 12px 20px !important;
 }
 
 /* ==========================================================================
@@ -310,16 +347,68 @@ body {
 }
 
 .btn-primary {
-    background: var(--green);
-    color: #031002;
-    border-color: var(--green);
-    box-shadow: 0 10px 30px rgba(53, 213, 31, 0.2);
+    background: var(--gold-gradient);
+    color: var(--gold-text);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: var(--radius-full);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    box-shadow: 
+        0 10px 28px var(--gold-glow),
+        0 2px 6px rgba(0, 0, 0, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.95),
+        inset 0 -2px 4px rgba(249, 164, 36, 0.3);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary span {
+    color: var(--gold-text);
+    font-weight: 800;
+    transition: transform 0.25s ease;
+    display: inline-block;
 }
 
 .btn-primary:hover {
-    background: var(--green-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 14px 40px rgba(53, 213, 31, 0.3);
+    background: var(--gold-gradient-hover);
+    color: var(--gold-text);
+    transform: translateY(-2.5px);
+    border-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 
+        0 14px 40px var(--gold-glow-hover),
+        0 4px 10px rgba(0, 0, 0, 0.35),
+        inset 0 1px 2px #ffffff,
+        inset 0 -2px 6px rgba(249, 164, 36, 0.45);
+}
+
+.btn-primary:hover span {
+    transform: translate(2px, -2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 
+        0 4px 14px var(--gold-glow),
+        inset 0 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+/* Subtle luxury shine reflection sweep on hover */
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.75s ease;
+    pointer-events: none;
+}
+
+.btn-primary:hover::after {
+    left: 150%;
 }
 
 .btn-ghost {
@@ -831,7 +920,16 @@ body {
     justify-content: space-between;
     align-items: center;
     gap: 40px;
-    background: radial-gradient(circle at 85% 20%, rgba(53, 213, 31, 0.08), transparent 40%), #090909;
+    background: 
+        radial-gradient(circle at 85% 50%, rgba(249, 164, 36, 0.1), transparent 45%),
+        radial-gradient(circle at 15% 20%, rgba(53, 213, 31, 0.05), transparent 40%),
+        #090909;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    transition: var(--transition);
+}
+
+.cta-box:hover {
+    border-color: rgba(250, 179, 71, 0.3);
 }
 
 .cta-desc {
@@ -1776,15 +1874,17 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    border: 1px solid #222;
-    background: #0d0d0d;
-    padding: 8px 16px;
+    border: 1px solid rgba(250, 179, 71, 0.28);
+    background: rgba(250, 179, 71, 0.05);
+    padding: 8px 18px;
     border-radius: var(--radius-full);
     font-size: 12.5px;
+    box-shadow: 0 2px 12px rgba(249, 164, 36, 0.12);
 }
 
 .stars, .testimonial-stars {
-    color: var(--green);
+    color: var(--gold-amber);
+    text-shadow: 0 0 10px rgba(250, 179, 71, 0.45);
     letter-spacing: 2px;
     font-size: 14px;
 }
@@ -2009,4 +2109,95 @@ body {
 .magic-toast.show {
     transform: translateY(0);
     opacity: 1;
+}
+
+
+/* ==========================================================================
+   20. MAGIC STARFIELD CANVAS + CUSTOM STAR CURSOR
+   ========================================================================== */
+
+/* ── Hide default OS cursor sitewide ── */
+*,
+*::before,
+*::after {
+    cursor: none !important;
+}
+
+/* ── Starfield canvas ── */
+#magicStarfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;          /* above noise overlay, below header/content */
+    pointer-events: none;
+    display: block;
+}
+
+/* ── Custom star cursor glyph ── */
+#magic-cursor-star {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    z-index: 99999;
+    pointer-events: none;
+    font-size: 18px;
+    line-height: 20px;
+    text-align: center;
+    color: var(--green);
+    text-shadow:
+        0 0 6px var(--green),
+        0 0 14px var(--green),
+        0 0 28px rgba(53, 213, 31, 0.6);
+    will-change: transform;
+    transition: opacity 0.2s ease;
+    user-select: none;
+    /* Star unicode glyph */
+}
+#magic-cursor-star::before {
+    content: '✦';
+    display: block;
+    animation: cursorPulse 1.8s ease-in-out infinite;
+}
+
+/* Click burst effect */
+#magic-cursor-star.magic-cursor--click::before {
+    animation: cursorClick 0.25s ease-out forwards;
+}
+
+@keyframes cursorPulse {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.25) rotate(15deg);
+        opacity: 0.85;
+    }
+}
+
+@keyframes cursorClick {
+    0%   { transform: scale(1.6) rotate(30deg); opacity: 1; }
+    100% { transform: scale(0.8) rotate(0deg);  opacity: 0.9; }
+}
+
+/* Hover state over interactive elements (buttons, links) */
+#magic-cursor-star.magic-cursor--hover::before {
+    transform: scale(1.4) rotate(45deg);
+    color: var(--gold-amber);
+    text-shadow:
+        0 0 8px var(--gold-amber),
+        0 0 16px var(--gold-amber),
+        0 0 32px rgba(249, 164, 36, 0.7);
+    transition: all 0.2s ease;
+}
+
+/* On touch / mobile — restore default cursor, hide canvas overlay */
+@media (hover: none) and (pointer: coarse) {
+    * { cursor: auto !important; }
+    #magic-cursor-star { display: none; }
+    #magicStarfield { display: none; }
 }
