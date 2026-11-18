@@ -13,8 +13,8 @@ class ProjectController extends Controller
     public function index(): View
     {
         return view('pages.projects', [
-            'title' => 'Portfolio & Études de Cas — Réalisations Digitales | Magic Code',
-            'metaDescription' => 'Découvrez les projets récents réalisés par Magic Code : Lotti.ma, MYSTIQO, CryptoPulse, RideMate et plus encore.',
+            'title' => __('site.nav_projects') . ' — Magic Code',
+            'metaDescription' => __('site.projects_page_lead'),
             'projects' => ProjectRepository::all(),
         ]);
     }

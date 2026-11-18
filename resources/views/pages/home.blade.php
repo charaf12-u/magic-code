@@ -6,32 +6,32 @@
         <div class="container hero-grid">
             <div class="hero-copy reveal">
                 <div class="eyebrow">
-                    <span class="pulse"></span> DISPONIBLE POUR NOUVEAUX PROJETS · MAROC & INTERNATIONAL
+                    <span class="pulse"></span> {{ __('site.available_status') }}
                 </div>
                 <h1>
-                    Nous concevons des produits digitaux d'exception qui <span class="green">accélèrent votre croissance.</span>
+                    {{ __('site.hero_title_prefix') }} <span class="green">{{ __('site.hero_title_highlight') }}</span>
                 </h1>
                 <p class="hero-lead">
-                    Studio digital indépendant spécialisé en ingénierie web moderne, applications mobiles haute performance et intégration IA. De l'architecture technique au déploiement sécurisé, nous transformons vos ambitions en réalité.
+                    {{ __('site.platform_presentation') }}
                 </p>
                 <div class="hero-actions">
                     <a class="btn btn-primary btn-big" href="{{ route('contact') }}">
-                        Démarrer un projet <span>↗</span>
+                        {{ __('site.hero_cta_primary') }}
                     </a>
                     <a class="btn btn-ghost btn-big" href="{{ route('projects') }}">
-                        Explorer nos réalisations
+                        {{ __('site.hero_cta_secondary') }}
                     </a>
                 </div>
                 <div class="trust-row">
-                    <span><b class="check" style="color: var(--status-green);">✓</b> Cession 100% code propriétaire</span>
-                    <span><b class="check" style="color: var(--status-green);">✓</b> Architecture scalable & sécurisée</span>
-                    <span><b class="check" style="color: var(--status-green);">✓</b> Accompagnement direct sur WhatsApp</span>
+                    <span><b class="check" style="color: var(--status-green);">✓</b> {{ __('site.trust_1') }}</span>
+                    <span><b class="check" style="color: var(--status-green);">✓</b> {{ __('site.trust_2') }}</span>
+                    <span><b class="check" style="color: var(--status-green);">✓</b> {{ __('site.trust_3') }}</span>
                 </div>
             </div>
 
             <div class="hero-art reveal delay-1">
                 <div class="orb"></div>
-                <img src="{{ asset('images/magic-wand-hero.png') }}" alt="Magic Code - baguette magique et code digital" width="620" height="620" loading="eager">
+                <img src="{{ asset('images/magic-wand-hero.png') }}" alt="Magic Code - {{ __('site.slogan') }}" width="620" height="620" loading="eager">
                 <div class="code-float">
                     &lt;code /&gt;<br>
                     <b>ideas → reality</b>
@@ -44,20 +44,20 @@
     <section class="section dark-band" style="padding: 44px 0;">
         <div class="container stats">
             <div>
-                <strong>4 Semaines</strong>
-                <span>Délai moyen de livraison MVP</span>
+                <strong>{{ __('site.stat_1_val') }}</strong>
+                <span>{{ __('site.stat_1_label') }}</span>
             </div>
             <div>
-                <strong>99.9%</strong>
-                <span>Disponibilité & Uptime serveurs</span>
+                <strong>{{ __('site.stat_2_val') }}</strong>
+                <span>{{ __('site.stat_2_label') }}</span>
             </div>
             <div>
-                <strong>100%</strong>
-                <span>Code audité & sans dette technique</span>
+                <strong>{{ __('site.stat_3_val') }}</strong>
+                <span>{{ __('site.stat_3_label') }}</span>
             </div>
             <div>
-                <strong>5.0 ★</strong>
-                <span>Satisfaction client certifiée</span>
+                <strong>{{ __('site.stat_4_val') }}</strong>
+                <span>{{ __('site.stat_4_label') }}</span>
             </div>
         </div>
     </section>
@@ -85,11 +85,11 @@
         <div class="container">
             <div class="section-head">
                 <div>
-                    <div class="eyebrow">01 · EXPERTISES & SOLUTIONS</div>
-                    <h2>Une maîtrise technique complète pour <span class="green">vos défis les plus ambitieux.</span></h2>
+                    <div class="eyebrow">{{ __('site.services_eyebrow') }}</div>
+                    <h2>{{ __('site.services_title') }} <span class="green">{{ __('site.services_title_highlight') }}</span></h2>
                 </div>
                 <a class="text-link" href="{{ route('services') }}">
-                    Toutes nos expertises ↗
+                    {{ __('site.services_all_link') }}
                 </a>
             </div>
 
@@ -102,7 +102,7 @@
                         </div>
                         <h3>{{ $service['title'] }}</h3>
                         <p>{{ $service['short_description'] }}</p>
-                        <span class="card-arrow" aria-hidden="true">↗</span>
+                        <span class="card-arrow" aria-hidden="true">{{ app()->getLocale() === 'ar' ? '↖' : '↗' }}</span>
                     </a>
                 @endforeach
             </div>
@@ -113,42 +113,42 @@
     <section class="section dark-band">
         <div class="container two-col">
             <div>
-                <div class="eyebrow">02 · ENGAGEMENTS & MÉTHODE</div>
+                <div class="eyebrow">{{ __('site.why_eyebrow') }}</div>
                 <h2>
-                    Pourquoi les entreprises exigeantes<br>
-                    <span class="green">choisissent Magic Code.</span>
+                    {{ __('site.why_title') }}<br>
+                    <span class="green">{{ __('site.why_title_highlight') }}</span>
                 </h2>
                 <p class="section-subtext">
-                    Pas de buzzwords ni d'intermédiaires inutiles : une équipe d'ingénieurs passionnés dédiée à la réussite mesurable et à la pérennité technique de votre produit.
+                    {{ __('site.why_subtext') }}
                 </p>
             </div>
             <div class="feature-list">
                 <div>
                     <b>01</b>
                     <div>
-                        <strong>Architecture Évolutive & Sécurité</strong>
-                        <span>Base de code modulaire Laravel, typage rigoureux, API REST/GraphQL et couverture de tests automatisés.</span>
+                        <strong>{{ __('site.why_1_title') }}</strong>
+                        <span>{{ __('site.why_1_desc') }}</span>
                     </div>
                 </div>
                 <div>
                     <b>02</b>
                     <div>
-                        <strong>Haute Performance & SEO Natif</strong>
-                        <span>Temps de chargement inférieurs à 1 seconde, optimisation Core Web Vitals et indexation technique irréprochable.</span>
+                        <strong>{{ __('site.why_2_title') }}</strong>
+                        <span>{{ __('site.why_2_desc') }}</span>
                     </div>
                 </div>
                 <div>
                     <b>03</b>
                     <div>
-                        <strong>Communication Directe & Suivi Hebdomadaire</strong>
-                        <span>Accès direct aux développeurs seniors via groupe dédié WhatsApp & Slack, points de sprint réguliers et transparence totale.</span>
+                        <strong>{{ __('site.why_3_title') }}</strong>
+                        <span>{{ __('site.why_3_desc') }}</span>
                     </div>
                 </div>
                 <div>
                     <b>04</b>
                     <div>
-                        <strong>Mesure d'Impact & ROI Garanti</strong>
-                        <span>Intégration d'outils d'analytics temps réel et d'indicateurs de performance clés dès la phase de conception.</span>
+                        <strong>{{ __('site.why_4_title') }}</strong>
+                        <span>{{ __('site.why_4_desc') }}</span>
                     </div>
                 </div>
             </div>
@@ -160,11 +160,11 @@
         <div class="container">
             <div class="section-head">
                 <div>
-                    <div class="eyebrow">03 · RÉALISATIONS SÉLECTIONNÉES</div>
-                    <h2>Des projets concrets qui <span class="green">démontrent notre exigence.</span></h2>
+                    <div class="eyebrow">{{ __('site.projects_eyebrow') }}</div>
+                    <h2>{{ __('site.projects_title') }} <span class="green">{{ __('site.projects_title_highlight') }}</span></h2>
                 </div>
                 <a class="text-link" href="{{ route('projects') }}">
-                    Explorer tout le portfolio ↗
+                    {{ __('site.projects_all_link') }}
                 </a>
             </div>
 
@@ -191,31 +191,31 @@
         <div class="container">
             <div class="section-head">
                 <div>
-                    <div class="eyebrow">04 · NOTRE MÉTHODOLOGIE</div>
-                    <h2>Un processus transparent, <span class="green">du cadrage à la mise en production.</span></h2>
+                    <div class="eyebrow">{{ __('site.process_eyebrow') }}</div>
+                    <h2>{{ __('site.process_title') }} <span class="green">{{ __('site.process_title_highlight') }}</span></h2>
                 </div>
             </div>
 
             <div class="process-grid">
                 <div>
                     <span>01</span>
-                    <h3>Immersion & Cadrage</h3>
-                    <p>Audit approfondi de vos besoins métier, modélisation des flux utilisateurs et spécifications techniques sans ambiguïté.</p>
+                    <h3>{{ __('site.process_1_title') }}</h3>
+                    <p>{{ __('site.process_1_desc') }}</p>
                 </div>
                 <div>
                     <span>02</span>
-                    <h3>Architecture & UX</h3>
-                    <p>Design de l'interface utilisateur sur mesure, schéma relationnel de données et validation des maquettes interactives.</p>
+                    <h3>{{ __('site.process_2_title') }}</h3>
+                    <p>{{ __('site.process_2_desc') }}</p>
                 </div>
                 <div>
                     <span>03</span>
-                    <h3>Développement Itératif</h3>
-                    <p>Développement par sprints courts, revues de code systématiques et environnement de pré-production accessible en direct.</p>
+                    <h3>{{ __('site.process_3_title') }}</h3>
+                    <p>{{ __('site.process_3_desc') }}</p>
                 </div>
                 <div>
                     <span>04</span>
-                    <h3>Déploiement & Garantie</h3>
-                    <p>Mise en production sécurisée, configuration CDN/SSL, formation de vos équipes et 30 jours de garantie corrective inclus.</p>
+                    <h3>{{ __('site.process_4_title') }}</h3>
+                    <p>{{ __('site.process_4_desc') }}</p>
                 </div>
             </div>
         </div>
@@ -226,12 +226,12 @@
         <div class="container">
             <div class="section-head">
                 <div>
-                    <div class="eyebrow">05 · TÉMOIGNAGES CLIENTS</div>
-                    <h2>Ce que disent <span class="green">nos partenaires.</span></h2>
+                    <div class="eyebrow">{{ __('site.testimonials_eyebrow') }}</div>
+                    <h2>{{ __('site.testimonials_title') }} <span class="green">{{ __('site.testimonials_title_highlight') }}</span></h2>
                 </div>
                 <div class="rating-badge">
                     <span class="stars">★★★★★</span>
-                    <b>5.0 / 5.0 · Satisfaction client certifiée</b>
+                    <b>{{ __('site.testimonials_rating') }}</b>
                 </div>
             </div>
 
@@ -239,13 +239,13 @@
                 <div class="testimonial-card reveal">
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text">
-                        « Magic Code a compris nos besoins fonciers en quelques heures. La plateforme Lotti.ma tourne à une vitesse impressionnante et nos promoteurs adorent la cartographie. »
+                        {{ __('site.test_1_quote') }}
                     </p>
                     <div class="testimonial-author">
                         <div class="author-avatar">ML</div>
                         <div>
-                            <strong>Mehdi L.</strong>
-                            <span>Fondateur · Plateforme Immobilière</span>
+                            <strong>{{ __('site.test_1_author') }}</strong>
+                            <span>{{ __('site.test_1_role') }}</span>
                         </div>
                     </div>
                 </div>
@@ -253,13 +253,13 @@
                 <div class="testimonial-card reveal delay-1">
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text">
-                        « La rigueur technique sur notre pipeline Big Data nous a fait gagner des semaines d'ingénierie. Idempotence, tests dbt et disponibilité 99.9% au rendez-vous. »
+                        {{ __('site.test_2_quote') }}
                     </p>
                     <div class="testimonial-author">
                         <div class="author-avatar">ST</div>
                         <div>
-                            <strong>Sara T.</strong>
-                            <span>Lead Data Engineer · FinTech</span>
+                            <strong>{{ __('site.test_2_author') }}</strong>
+                            <span>{{ __('site.test_2_role') }}</span>
                         </div>
                     </div>
                 </div>
@@ -267,13 +267,13 @@
                 <div class="testimonial-card reveal delay-2">
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text">
-                        « Rarement vu un studio aussi réactif et pragmatique. Aucun blabla inutile : code propre, respect des délais et accompagnement sans faille sur WhatsApp. »
+                        {{ __('site.test_3_quote') }}
                     </p>
                     <div class="testimonial-author">
                         <div class="author-avatar">YM</div>
                         <div>
-                            <strong>Yassine M.</strong>
-                            <span>CTO · Startup Mobilité Urbaine</span>
+                            <strong>{{ __('site.test_3_author') }}</strong>
+                            <span>{{ __('site.test_3_role') }}</span>
                         </div>
                     </div>
                 </div>
@@ -285,61 +285,61 @@
     <section class="section faq-section" id="faq">
         <div class="container faq-grid-wrap">
             <div class="faq-head">
-                <div class="eyebrow">06 · QUESTIONS FRÉQUENTES</div>
-                <h2>Tout ce que vous devez <span class="green">savoir avant de démarrer.</span></h2>
+                <div class="eyebrow">{{ __('site.faq_eyebrow') }}</div>
+                <h2>{{ __('site.faq_title') }} <span class="green">{{ __('site.faq_title_highlight') }}</span></h2>
                 <p class="prose">
-                    Vous avez un projet spécifique avec des contraintes techniques particulières ? Échangeons directement sur WhatsApp ou par email pour un cadrage sur mesure.
+                    {{ __('site.faq_lead') }}
                 </p>
                 <a class="btn btn-ghost" href="{{ route('contact') }}">
-                    Poser une question spécifique ↗
+                    {{ __('site.faq_ask_btn') }}
                 </a>
             </div>
 
             <div class="faq-accordion">
                 <div class="faq-item">
                     <button class="faq-question" type="button" aria-expanded="false">
-                        <span>Combien de temps prend la conception d'un projet ?</span>
+                        <span>{{ __('site.faq_q1') }}</span>
                         <b class="faq-icon" aria-hidden="true">+</b>
                     </button>
                     <div class="faq-answer">
                         <p>
-                            Un projet type MVP ou site sur mesure prend généralement entre <strong>2 à 4 semaines</strong>. Pour des architectures plus complexes (plateformes complètes, pipelines Big Data ou applications mobiles natives), comptez de <strong>4 à 8 semaines</strong> avec des livraisons intermédiaires hebdomadaires.
+                            {{ __('site.faq_a1') }}
                         </p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <button class="faq-question" type="button" aria-expanded="false">
-                        <span>Comment s'organisent la communication et le suivi technique ?</span>
+                        <span>{{ __('site.faq_q2') }}</span>
                         <b class="faq-icon" aria-hidden="true">+</b>
                     </button>
                     <div class="faq-answer">
                         <p>
-                            Nous privilégions une communication directe sans intermédiaire via un groupe dédié (WhatsApp / Slack), un suivi hebdomadaire en visio et un accès complet à l'environnement de pré-production et au dépôt Git pour une transparence totale.
+                            {{ __('site.faq_a2') }}
                         </p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <button class="faq-question" type="button" aria-expanded="false">
-                        <span>Quelles sont les modalités de paiement et devis ?</span>
+                        <span>{{ __('site.faq_q3') }}</span>
                         <b class="faq-icon" aria-hidden="true">+</b>
                     </button>
                     <div class="faq-answer">
                         <p>
-                            Chaque prestation fait l'objet d'un devis détaillé et d'un contrat clair. Le règlement s'effectue généralement en plusieurs tranches : un acompte au lancement (30% à 40%), un jalon intermédiaire et le solde à la validation finale avant mise en production.
+                            {{ __('site.faq_a3') }}
                         </p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <button class="faq-question" type="button" aria-expanded="false">
-                        <span>Proposez-vous une garantie et maintenance après la livraison ?</span>
+                        <span>{{ __('site.faq_q4') }}</span>
                         <b class="faq-icon" aria-hidden="true">+</b>
                     </button>
                     <div class="faq-answer">
                         <p>
-                            Absolument. Tous nos développements incluent une garantie corrective de <strong>30 jours</strong> après mise en production. Par la suite, nous proposons des forfaits d'infogérance et d'évolution mensuelle adaptés à vos besoins.
+                            {{ __('site.faq_a4') }}
                         </p>
                     </div>
                 </div>
@@ -351,17 +351,17 @@
     <section class="cta-section">
         <div class="container cta-box">
             <div>
-                <div class="eyebrow">07 · NOUVEAU PROJET</div>
+                <div class="eyebrow">{{ __('site.cta_eyebrow') }}</div>
                 <h2>
-                    Votre prochaine idée mérite<br>
-                    <span class="green">une réalisation d'exception.</span>
+                    {{ __('site.cta_title') }}<br>
+                    <span class="green">{{ __('site.cta_title_highlight') }}</span>
                 </h2>
                 <p class="cta-desc">
-                    Échangeons dès aujourd'hui sur votre vision et recevez une proposition technique et tarifaire sous 24 heures ouvrées.
+                    {{ __('site.cta_desc') }}
                 </p>
             </div>
             <a class="btn btn-primary btn-big" href="{{ route('contact') }}">
-                Démarrer mon projet ↗
+                {{ __('site.cta_btn') }}
             </a>
         </div>
     </section>
@@ -375,7 +375,7 @@
         'name' => 'Magic Code',
         'url' => url('/'),
         'logo' => asset('images/magic-code-logo.png'),
-        'description' => 'Studio digital freelance au Maroc spécialisé en développement web Laravel, applications mobiles, data engineering et intelligence artificielle.',
+        'description' => __('site.meta_description'),
         'areaServed' => [
             '@type' => 'Country',
             'name' => 'Morocco',

@@ -15,8 +15,8 @@ class PageController extends Controller
     public function home(): View
     {
         return view('pages.home', [
-            'title' => 'Magic Code — Freelance Digital Studio au Maroc | Web, Mobile, Data & AI',
-            'metaDescription' => 'Studio digital freelance au Maroc. Conception et développement de sites web Laravel, applications mobiles, pipelines de données et solutions IA sur mesure.',
+            'title' => 'Magic Code — ' . __('site.slogan'),
+            'metaDescription' => __('site.meta_description'),
             'featuredServices' => ServiceRepository::featured(4),
             'featuredProjects' => ProjectRepository::featured(3),
         ]);
@@ -28,8 +28,8 @@ class PageController extends Controller
     public function about(): View
     {
         return view('pages.about', [
-            'title' => 'À Propos de Magic Code — Philosophie & Vision Digitale',
-            'metaDescription' => 'Découvrez Magic Code : un studio freelance axé sur la clarté technique, la performance et l\'accompagnement sur mesure pour vos produits digitaux.',
+            'title' => __('site.nav_about') . ' — Magic Code',
+            'metaDescription' => __('site.meta_description'),
         ]);
     }
 
@@ -39,8 +39,8 @@ class PageController extends Controller
     public function legal(): View
     {
         return view('legal.legal', [
-            'title' => 'Mentions Légales — Magic Code',
-            'metaDescription' => 'Mentions légales et informations éditoriales du studio digital Magic Code.',
+            'title' => __('site.legal_notice') . ' — Magic Code',
+            'metaDescription' => __('site.legal_page_desc'),
         ]);
     }
 
@@ -50,8 +50,8 @@ class PageController extends Controller
     public function privacy(): View
     {
         return view('legal.privacy', [
-            'title' => 'Politique de Confidentialité — Magic Code',
-            'metaDescription' => 'Politique de confidentialité et protection des données personnelles sur le site de Magic Code.',
+            'title' => __('site.privacy_policy') . ' — Magic Code',
+            'metaDescription' => __('site.privacy_page_desc'),
         ]);
     }
 

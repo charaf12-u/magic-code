@@ -3,9 +3,9 @@
 @section('content')
     <section class="page-hero">
         <div class="container">
-            <div class="eyebrow">Cadre Juridique</div>
-            <h1>Mentions <span class="green">légales.</span></h1>
-            <p>Informations éditoriales, mentions légales et conditions d'utilisation du site Magic Code.</p>
+            <div class="eyebrow">{{ __('site.legal_page_eyebrow') }}</div>
+            <h1>{{ __('site.legal_page_title') }} <span class="green">{{ __('site.legal_page_title_highlight') }}</span></h1>
+            <p>{{ __('site.legal_page_desc') }}</p>
         </div>
     </section>
 
@@ -13,7 +13,7 @@
         <div class="container prose">
             <h2>1. Éditeur de la plateforme</h2>
             <p>
-                Le site <strong>Magic Code</strong> (magic-code.ma) est édité par le studio indépendant d'ingénierie logicielle Magic Code, exerçant en tant qu'activité de services digitaux freelance basée à {{ config('contact.location') }}.
+                Le site <strong>Magic Code</strong> est édité par le studio indépendant d'ingénierie logicielle Magic Code, exerçant en tant qu'activité de services digitaux freelance basée à {{ config('contact.location') }}.
             </p>
             <p>
                 <strong>Contact électronique :</strong> <a href="mailto:{{ config('contact.email') }}">{{ config('contact.email') }}</a><br>

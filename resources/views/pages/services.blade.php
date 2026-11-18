@@ -4,12 +4,12 @@
     <!-- Services Page Hero -->
     <section class="page-hero">
         <div class="container">
-            <div class="eyebrow">Services & Expertises · Magic Code</div>
+            <div class="eyebrow">{{ __('site.services_page_eyebrow') }}</div>
             <h1>
-                Une équipe experte pour <span class="green">concevoir, développer</span> et automatiser.
+                {{ __('site.services_page_title') }} <span class="green">{{ __('site.services_page_title_highlight') }}</span>
             </h1>
             <p>
-                Du premier prototype à la plateforme scalant auprès de milliers d'utilisateurs, nous mettons l'ingénierie logicielle et la rigueur technique au service de vos ambitions.
+                {{ __('site.services_page_lead') }}
             </p>
         </div>
     </section>
@@ -29,7 +29,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <span class="row-arrow" aria-hidden="true">↗</span>
+                    <span class="row-arrow" aria-hidden="true">{{ app()->getLocale() === 'ar' ? '↖' : '↗' }}</span>
                 </a>
             @endforeach
         </div>
@@ -39,17 +39,17 @@
     <section class="cta-section">
         <div class="container cta-box">
             <div>
-                <div class="eyebrow">Prêt à collaborer ?</div>
+                <div class="eyebrow">{{ __('site.services_cta_eyebrow') }}</div>
                 <h2>
-                    Un besoin spécifique<br>
-                    <span class="green">ou un projet sur mesure ?</span>
+                    {{ __('site.services_cta_title') }}<br>
+                    <span class="green">{{ __('site.services_cta_title_highlight') }}</span>
                 </h2>
                 <p class="cta-desc">
-                    Discutons de vos enjeux et construisons la solution technique la plus adaptée à vos objectifs.
+                    {{ __('site.services_cta_desc') }}
                 </p>
             </div>
             <a class="btn btn-primary btn-big" href="{{ route('contact') }}">
-                Demander un devis gratuit ↗
+                {{ __('site.services_cta_btn') }}
             </a>
         </div>
     </section>

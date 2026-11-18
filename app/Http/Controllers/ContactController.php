@@ -16,8 +16,8 @@ class ContactController extends Controller
     public function index(): View
     {
         return view('pages.contact', [
-            'title' => 'Contactez Magic Code — Discutons de votre projet',
-            'metaDescription' => 'Vous avez un projet web, mobile, data ou IA ? Contactez le studio Magic Code pour un devis gratuit ou un échange technique sans engagement.',
+            'title' => __('site.nav_contact') . ' — Magic Code',
+            'metaDescription' => __('site.contact_lead'),
             'contactEmail' => config('contact.email'),
             'contactPhone' => config('contact.phone'),
             'contactWhatsapp' => config('contact.whatsapp'),

@@ -5,7 +5,7 @@
     <section class="page-hero project-detail">
         <div class="container">
             <a class="back-link" href="{{ route('projects') }}">
-                ← Retour au portfolio
+                {{ __('site.back_to_projects') }}
             </a>
             <div class="eyebrow">{{ $project['category'] }}</div>
             <h1>{{ $project['title'] }}</h1>
@@ -19,10 +19,10 @@
 
             <div class="hero-actions" style="margin-top: 30px;">
                 <a class="btn btn-primary" href="{{ route('contact') }}">
-                    Lancer un projet similaire <span>↗</span>
+                    {{ __('site.start_similar_project') }}
                 </a>
-                <button class="btn btn-ghost" type="button" onclick="navigator.clipboard.writeText(window.location.href); if (window.showMagicToast) window.showMagicToast('✓ Lien du projet copié dans le presse-papier !');">
-                    Partager ce projet 🔗
+                <button class="btn btn-ghost" type="button" onclick="navigator.clipboard.writeText(window.location.href); if (window.showMagicToast) window.showMagicToast('{{ addslashes(__('site.link_copied')) }}');">
+                    {{ __('site.share_project') }}
                 </button>
             </div>
         </div>
@@ -46,32 +46,32 @@
     <section class="section">
         <div class="container case-grid">
             <div class="case-visual">
-                <img src="{{ asset($project['image']) }}" alt="{{ $project['title'] }} aperçu du projet" loading="lazy">
+                <img src="{{ asset($project['image']) }}" alt="{{ $project['title'] }}" loading="lazy">
                 <div class="case-visual-badge">
-                    <span>Projet certifié</span>
+                    <span>{{ __('site.project_certified_badge') }}</span>
                     <b>Magic Code</b>
                 </div>
             </div>
 
             <div class="case-details">
                 <div class="case-block">
-                    <div class="eyebrow">01 · Le Défi</div>
-                    <h2>Comprendre le <span class="green">besoin métier.</span></h2>
+                    <div class="eyebrow">{{ __('site.project_challenge_eyebrow') }}</div>
+                    <h2>{{ __('site.project_challenge_title') }} <span class="green">{{ __('site.project_challenge_title_highlight') }}</span></h2>
                     <p class="prose">
                         {{ $project['challenge'] }}
                     </p>
                 </div>
 
                 <div class="case-block">
-                    <div class="eyebrow">02 · L'Approche Technique</div>
-                    <h2>Concevoir la <span class="green">meilleure solution.</span></h2>
+                    <div class="eyebrow">{{ __('site.project_solution_eyebrow') }}</div>
+                    <h2>{{ __('site.project_solution_title') }} <span class="green">{{ __('site.project_solution_title_highlight') }}</span></h2>
                     <p class="prose">
                         {{ $project['solution'] }}
                     </p>
                 </div>
 
                 <div class="case-block">
-                    <div class="eyebrow">03 · Fonctionnalités Clés</div>
+                    <div class="eyebrow">{{ __('site.project_features_eyebrow') }}</div>
                     <ul class="check-list">
                         @foreach($project['features'] as $feature)
                             <li>{{ $feature }}</li>
@@ -88,11 +88,11 @@
             <div class="container">
                 <div class="section-head">
                     <div>
-                        <div class="eyebrow">Portfolio</div>
-                        <h2>Découvrez d'autres <span class="green">projets récents.</span></h2>
+                        <div class="eyebrow">{{ __('site.other_projects_eyebrow') }}</div>
+                        <h2>{{ __('site.other_projects_title') }} <span class="green">{{ __('site.other_projects_title_highlight') }}</span></h2>
                     </div>
                     <a class="text-link" href="{{ route('projects') }}">
-                        Voir tous les projets ↗
+                        {{ __('site.view_all_projects') }}
                     </a>
                 </div>
 
@@ -114,16 +114,16 @@
     <section class="cta-section">
         <div class="container cta-box">
             <div>
-                <div class="eyebrow">Votre projet</div>
+                <div class="eyebrow">{{ __('site.project_cta_eyebrow') }}</div>
                 <h2>
-                    Construisons ensemble votre <span class="green">prochain succès.</span>
+                    {{ __('site.project_cta_title') }} <span class="green">{{ __('site.project_cta_title_highlight') }}</span>
                 </h2>
                 <p class="cta-desc">
-                    Partagez-nous votre vision et étudions la meilleure feuille de route technique pour votre projet.
+                    {{ __('site.project_cta_desc') }}
                 </p>
             </div>
             <a class="btn btn-primary btn-big" href="{{ route('contact') }}">
-                Démarrer un projet ↗
+                {{ __('site.nav_cta') }} {{ app()->getLocale() === 'ar' ? '↖' : '↗' }}
             </a>
         </div>
     </section>

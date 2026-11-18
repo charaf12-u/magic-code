@@ -4,48 +4,48 @@
             <a class="brand footer-brand" href="{{ route('home') }}" aria-label="Magic Code">
                 <img src="{{ asset('images/magic-code-logo.png') }}" alt="Logo Magic Code" width="56" height="56">
             </a>
+            <p class="footer-slogan">
+                <strong>{{ __('site.slogan') }}</strong>
+            </p>
             <p>
-                We code the magic. Studio freelance digital spécialisé dans la conception de solutions web, mobiles, data et IA pensées pour le monde réel.
+                {{ __('site.platform_presentation') }}
             </p>
             <div class="footer-badge">
-                <span class="pulse-dot"></span> Disponible pour de nouveaux projets
+                <span class="pulse-dot"></span> {{ __('site.available_badge') }}
             </div>
         </div>
 
         <div class="footer-col">
-            <h4>Navigation</h4>
-            <a href="{{ route('home') }}">Accueil</a>
-            <a href="{{ route('services') }}">Services</a>
-            <a href="{{ route('projects') }}">Projets</a>
-            <a href="{{ route('about') }}">À propos</a>
-            <a href="{{ route('contact') }}">Contact</a>
+            <h4>{{ __('site.navigation_heading') }}</h4>
+            <a href="{{ route('home') }}">{{ __('site.nav_home') }}</a>
+            <a href="{{ route('services') }}">{{ __('site.nav_services') }}</a>
+            <a href="{{ route('projects') }}">{{ __('site.nav_projects') }}</a>
+            <a href="{{ route('about') }}">{{ __('site.nav_about') }}</a>
+            <a href="{{ route('contact') }}">{{ __('site.nav_contact') }}</a>
         </div>
 
         <div class="footer-col">
-            <h4>Expertises</h4>
-            <a href="{{ route('services.show', 'web') }}">Web & Laravel</a>
-            <a href="{{ route('services.show', 'mobile') }}">Applications Mobiles</a>
-            <a href="{{ route('services.show', 'data') }}">Data Analytics & BI</a>
-            <a href="{{ route('services.show', 'ai') }}">IA & Automatisation</a>
-            <a href="{{ route('services.show', 'seo') }}">SEO & Performance</a>
-            <a href="{{ route('services.show', 'design') }}">UI / UX & Design</a>
+            <h4>{{ __('site.expertises_heading') }}</h4>
+            @foreach(\App\Repositories\ServiceRepository::all() as $srv)
+                <a href="{{ route('services.show', $srv['slug']) }}">{{ $srv['title'] }}</a>
+            @endforeach
         </div>
 
         <div class="footer-col">
-            <h4>Contact</h4>
+            <h4>{{ __('site.contact_heading') }}</h4>
             <a href="mailto:{{ config('contact.email') }}" class="footer-highlight">{{ config('contact.email') }}</a>
-            <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', config('contact.whatsapp')) }}" target="_blank" rel="noopener noreferrer">WhatsApp · {{ config('contact.phone') }}</a>
+            <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', config('contact.whatsapp')) }}?text={{ rawurlencode(__('site.whatsapp_prefilled')) }}" target="_blank" rel="noopener noreferrer">WhatsApp · {{ config('contact.phone') }}</a>
             <span>{{ config('contact.location') }}</span>
-            <span class="work-hours">Lun – Ven : 09h00 – 19h00</span>
+            <span class="work-hours">{{ __('site.hours') }}</span>
         </div>
     </div>
 
     <div class="container footer-bottom">
-        <span>© {{ date('Y') }} Magic Code. Tous droits réservés.</span>
+        <span>© {{ date('Y') }} Magic Code. {{ __('site.all_rights_reserved') }}</span>
         <div class="footer-legal-links">
-            <a href="{{ route('privacy') }}">Confidentialité</a>
-            <a href="{{ route('legal') }}">Mentions légales</a>
-            <a href="{{ route('sitemap') }}" target="_blank">Sitemap XML</a>
+            <a href="{{ route('privacy') }}">{{ __('site.privacy_policy') }}</a>
+            <a href="{{ route('legal') }}">{{ __('site.legal_notice') }}</a>
+            <a href="{{ route('sitemap') }}" target="_blank">{{ __('site.sitemap') }}</a>
         </div>
     </div>
 </footer>

@@ -3,9 +3,9 @@
 @section('content')
     <section class="page-hero">
         <div class="container">
-            <div class="eyebrow">Confidentialité & Données</div>
-            <h1>Politique de <span class="green">confidentialité.</span></h1>
-            <p>Notre engagement transparent concernant la collecte, le traitement et la protection de vos données personnelles.</p>
+            <div class="eyebrow">{{ __('site.privacy_page_eyebrow') }}</div>
+            <h1>{{ __('site.privacy_page_title') }} <span class="green">{{ __('site.privacy_page_title_highlight') }}</span></h1>
+            <p>{{ __('site.privacy_page_desc') }}</p>
         </div>
     </section>
 

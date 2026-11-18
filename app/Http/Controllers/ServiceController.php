@@ -13,8 +13,8 @@ class ServiceController extends Controller
     public function index(): View
     {
         return view('pages.services', [
-            'title' => 'Nos Services & Expertises — Web, Mobile, Data, IA & SEO | Magic Code',
-            'metaDescription' => 'Découvrez toutes les expertises digitales de Magic Code : développement web & Laravel, applications mobiles, data engineering, IA et optimisation SEO.',
+            'title' => __('site.nav_services') . ' — Magic Code',
+            'metaDescription' => __('site.services_page_lead'),
             'services' => ServiceRepository::all(),
         ]);
     }

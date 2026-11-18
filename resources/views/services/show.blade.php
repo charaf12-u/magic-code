@@ -5,10 +5,10 @@
     <section class="page-hero service-detail-hero">
         <div class="container">
             <a class="back-link" href="{{ route('services') }}">
-                ← Retour à l'ensemble des services
+                {{ __('site.back_to_services') }}
             </a>
             <div class="eyebrow">
-                Expertise {{ $service['number'] }} · {{ strtoupper($service['slug']) }}
+                {{ __('site.service_detail_eyebrow') }} {{ $service['number'] }} · {{ strtoupper($service['slug']) }}
             </div>
             <h1>{{ $service['title'] }}</h1>
             <p>{{ $service['lead'] }}</p>
@@ -25,16 +25,16 @@
     <section class="section">
         <div class="container two-col">
             <div>
-                <div class="eyebrow">Ce que nous livrons</div>
+                <div class="eyebrow">{{ __('site.deliverables_heading') }}</div>
                 <h2>
-                    Des livrables concrets pour <span class="green">votre croissance.</span>
+                    {{ __('site.deliverables_title') }} <span class="green">{{ __('site.deliverables_title_highlight') }}</span>
                 </h2>
                 <p class="prose">
-                    Chaque mission fait l'objet d'un cadrage précis, de jalons transparents et d'un code source audité et documenté prêt pour la production.
+                    {{ __('site.deliverables_intro') }}
                 </p>
 
                 <div class="benefits-block">
-                    <h3>Les points forts de notre accompagnement</h3>
+                    <h3>{{ __('site.benefits_heading') }}</h3>
                     <ul class="check-list">
                         @foreach($service['benefits'] as $benefit)
                             <li>{{ $benefit }}</li>
@@ -48,7 +48,7 @@
                     <div>
                         <b>{{ str_pad($idx + 1, 2, '0', STR_PAD_LEFT) }}</b>
                         <span>
-                            <strong>Livrable clé</strong>
+                            <strong>{{ __('site.deliverable_key_label') }}</strong>
                             {{ $deliverable }}
                         </span>
                     </div>
@@ -63,8 +63,8 @@
             <div class="container">
                 <div class="section-head">
                     <div>
-                        <div class="eyebrow">Explorer d'autres services</div>
-                        <h2>Découvrez nos autres <span class="green">expertises complémentaires.</span></h2>
+                        <div class="eyebrow">{{ __('site.other_services_eyebrow') }}</div>
+                        <h2>{{ __('site.other_services_title') }} <span class="green">{{ __('site.other_services_title_highlight') }}</span></h2>
                     </div>
                 </div>
                 <div class="service-grid">
@@ -76,7 +76,7 @@
                             </div>
                             <h3>{{ $other['title'] }}</h3>
                             <p>{{ $other['short_description'] }}</p>
-                            <span class="card-arrow" aria-hidden="true">↗</span>
+                            <span class="card-arrow" aria-hidden="true">{{ app()->getLocale() === 'ar' ? '↖' : '↗' }}</span>
                         </a>
                     @endforeach
                 </div>
@@ -88,17 +88,17 @@
     <section class="cta-section">
         <div class="container cta-box">
             <div>
-                <div class="eyebrow">Parlons de votre projet</div>
+                <div class="eyebrow">{{ __('site.service_quote_eyebrow') }}</div>
                 <h2>
-                    Besoin de cette expertise<br>
-                    <span class="green">pour votre entreprise ?</span>
+                    {{ __('site.service_quote_title') }}<br>
+                    <span class="green">{{ __('site.service_quote_title_highlight') }}</span>
                 </h2>
                 <p class="cta-desc">
-                    Recevez une estimation claire des coûts, des délais et de l'architecture recommandée.
+                    {{ __('site.service_quote_desc') }}
                 </p>
             </div>
             <a class="btn btn-primary btn-big" href="{{ route('contact') }}">
-                Demander un devis ↗
+                {{ __('site.service_quote_btn') }}
             </a>
         </div>
     </section>

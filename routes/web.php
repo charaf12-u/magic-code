@@ -30,3 +30,11 @@ Route::get('/projects/{slug}', [ProjectController::class, 'show'])->name('projec
 // Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+// Language Switcher
+Route::get('/lang/{locale}', function (string $locale) {
+    if (in_array($locale, ['fr', 'en', 'ar', 'tamazight', 'zgh'], true)) {
+        session(['locale' => $locale]);
+    }
+    return redirect()->back();
+})->name('lang.switch');

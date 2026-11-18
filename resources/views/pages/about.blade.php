@@ -4,13 +4,13 @@
     <!-- About Page Hero -->
     <section class="page-hero">
         <div class="container">
-            <div class="eyebrow">À propos · Magic Code</div>
+            <div class="eyebrow">{{ __('site.about_page_eyebrow') }}</div>
             <h1>
-                Le code est notre outil.<br>
-                <span class="green">Le résultat business est notre objectif.</span>
+                {{ __('site.about_title') }}<br>
+                <span class="green">{{ __('site.about_title_highlight') }}</span>
             </h1>
             <p>
-                Magic Code est un studio digital freelance basé au Maroc, dédié à la création d'architectures web robustes, d'applications mobiles intuitives et de pipelines de données fiables.
+                {{ __('site.about_lead') }}
             </p>
         </div>
     </section>
@@ -19,27 +19,27 @@
     <section class="section">
         <div class="container about-grid">
             <div>
-                <div class="eyebrow">Notre philosophie</div>
+                <div class="eyebrow">{{ __('site.about_philosophy_eyebrow') }}</div>
                 <h2>
-                    Simple à utiliser.<br>
-                    <span class="green">Inébranlable à l'intérieur.</span>
+                    {{ __('site.about_philosophy_title') }}<br>
+                    <span class="green">{{ __('site.about_philosophy_title_highlight') }}</span>
                 </h2>
                 <div class="quote-card">
-                    <p>« La simplicité n'est pas le manque de complexité : c'est le triomphe sur la complexité. »</p>
+                    <p>{{ __('site.about_quote') }}</p>
                 </div>
             </div>
             <div class="prose">
                 <p>
-                    Nous croyons qu'un bon produit digital doit avant tout être compréhensible, rapide et immédiatement utile avant d'être compliqué. Chaque ligne de code et chaque choix d'infrastructure doit répondre à un objectif métier clair et offrir une expérience utilisateur irréprochable.
+                    {{ __('site.about_philosophy_p1') }}
                 </p>
                 <p>
-                    Du cadrage initial au produit prêt pour des millions de requêtes, nous travaillons avec une méthodologie pragmatique et transparente : comprendre, concevoir, développer, tester et optimiser en continu.
+                    {{ __('site.about_philosophy_p2') }}
                 </p>
                 <ul class="check-list">
-                    <li>Zéro superflu : chaque fonctionnalité a une raison d'être</li>
-                    <li>Code propriétaire, maintenable et 100% documenté</li>
-                    <li>Communication directe sans intermédiaires inutiles</li>
-                    <li>Accompagnement après livraison et transfert de compétences</li>
+                    <li>{{ __('site.about_check_1') }}</li>
+                    <li>{{ __('site.about_check_2') }}</li>
+                    <li>{{ __('site.about_check_3') }}</li>
+                    <li>{{ __('site.about_check_4') }}</li>
                 </ul>
             </div>
         </div>
@@ -49,20 +49,20 @@
     <section class="section dark-band">
         <div class="container stats">
             <div>
-                <strong>6+</strong>
-                <span>Pôles d'expertise digitale</span>
+                <strong>{{ __('site.about_stat_1_val') }}</strong>
+                <span>{{ __('site.about_stat_1_label') }}</span>
             </div>
             <div>
-                <strong>100%</strong>
-                <span>Solutions conçues sur mesure</span>
+                <strong>{{ __('site.about_stat_2_val') }}</strong>
+                <span>{{ __('site.about_stat_2_label') }}</span>
             </div>
             <div>
-                <strong>&lt; 1s</strong>
-                <span>Objectif de vitesse de chargement</span>
+                <strong>{{ __('site.about_stat_3_val') }}</strong>
+                <span>{{ __('site.about_stat_3_label') }}</span>
             </div>
             <div>
-                <strong>MA</strong>
-                <span>Basé au Maroc · Partenaires dans le monde</span>
+                <strong>{{ __('site.about_stat_4_val') }}</strong>
+                <span>{{ __('site.about_stat_4_label') }}</span>
             </div>
         </div>
     </section>
@@ -72,31 +72,31 @@
         <div class="container">
             <div class="section-head">
                 <div>
-                    <div class="eyebrow">Nos valeurs</div>
-                    <h2>Ce qui guide <span class="green">notre travail au quotidien.</span></h2>
+                    <div class="eyebrow">{{ __('site.about_values_eyebrow') }}</div>
+                    <h2>{{ __('site.about_values_title') }} <span class="green">{{ __('site.about_values_title_highlight') }}</span></h2>
                 </div>
             </div>
 
             <div class="process-grid">
                 <div>
                     <span>01</span>
-                    <h3>Rigueur Technique</h3>
-                    <p>Respect scrupuleux des bonnes pratiques de l'industrie, typage strict, tests automatisés et architectures découplées.</p>
+                    <h3>{{ __('site.about_val_1_title') }}</h3>
+                    <p>{{ __('site.about_val_1_desc') }}</p>
                 </div>
                 <div>
                     <span>02</span>
-                    <h3>Transparence Totale</h3>
-                    <p>Accès au code source en continu, rapports d'avancement réguliers et devis détaillés sans frais cachés.</p>
+                    <h3>{{ __('site.about_val_2_title') }}</h3>
+                    <p>{{ __('site.about_val_2_desc') }}</p>
                 </div>
                 <div>
                     <span>03</span>
-                    <h3>Focus Performance</h3>
-                    <p>Optimisation des requêtes SQL, mise en cache intelligente, minification des assets et hébergement dimensionné au plus juste.</p>
+                    <h3>{{ __('site.about_val_3_title') }}</h3>
+                    <p>{{ __('site.about_val_3_desc') }}</p>
                 </div>
                 <div>
                     <span>04</span>
-                    <h3>Vision Long Terme</h3>
-                    <p>Nous construisons des applications faites pour durer, évoluer et accueillir de futures fonctionnalités sans devoir tout réécrire.</p>
+                    <h3>{{ __('site.about_val_4_title') }}</h3>
+                    <p>{{ __('site.about_val_4_desc') }}</p>
                 </div>
             </div>
         </div>
@@ -106,17 +106,17 @@
     <section class="cta-section">
         <div class="container cta-box">
             <div>
-                <div class="eyebrow">Rencontrons-nous</div>
+                <div class="eyebrow">{{ __('site.about_cta_eyebrow') }}</div>
                 <h2>
-                    Envie de collaborer<br>
-                    <span class="green">sur votre futur produit ?</span>
+                    {{ __('site.about_cta_title') }}<br>
+                    <span class="green">{{ __('site.about_cta_title_highlight') }}</span>
                 </h2>
                 <p class="cta-desc">
-                    Discutons de vos besoins techniques lors d'un appel ou par message.
+                    {{ __('site.about_cta_desc') }}
                 </p>
             </div>
             <a class="btn btn-primary btn-big" href="{{ route('contact') }}">
-                Prendre contact ↗
+                {{ __('site.about_cta_btn') }}
             </a>
         </div>
     </section>

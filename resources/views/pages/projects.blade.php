@@ -4,12 +4,12 @@
     <!-- Projects Page Hero -->
     <section class="page-hero">
         <div class="container">
-            <div class="eyebrow">Portfolio & Études de Cas · Magic Code</div>
+            <div class="eyebrow">{{ __('site.projects_page_eyebrow') }}</div>
             <h1>
-                Des produits digitaux <span class="green">conçus pour impacter.</span>
+                {{ __('site.projects_page_title') }} <span class="green">{{ __('site.projects_page_title_highlight') }}</span>
             </h1>
             <p>
-                Web, applications mobiles, ingénierie de données et automatisation : découvrez comment nous transformons des problématiques complexes en solutions élégantes, performantes et pérennes.
+                {{ __('site.projects_page_lead') }}
             </p>
         </div>
     </section>
@@ -18,10 +18,10 @@
     <section class="section">
         <div class="container filter-container">
             <div class="filter-bar">
-                <button class="filter-btn active" type="button" data-filter="all">Tous les projets ({{ count($projects) }})</button>
-                <button class="filter-btn" type="button" data-filter="web">Web & Laravel</button>
-                <button class="filter-btn" type="button" data-filter="data">Data Engineering & Analytics</button>
-                <button class="filter-btn" type="button" data-filter="mobile">Applications Mobiles</button>
+                <button class="filter-btn active" type="button" data-filter="all">{{ __('site.projects_filter_all') }} ({{ count($projects) }})</button>
+                <button class="filter-btn" type="button" data-filter="web">{{ __('site.projects_filter_web') }}</button>
+                <button class="filter-btn" type="button" data-filter="data">{{ __('site.projects_filter_data') }}</button>
+                <button class="filter-btn" type="button" data-filter="mobile">{{ __('site.projects_filter_mobile') }}</button>
             </div>
         </div>
 
@@ -45,9 +45,9 @@
                         </div>
                     </div>
                     <div class="portfolio-thumb">
-                        <img src="{{ asset($p['image']) }}" alt="{{ $p['title'] }} aperçu" loading="lazy">
+                        <img src="{{ asset($p['image']) }}" alt="{{ $p['title'] }} {{ __('site.nav_projects') }}" loading="lazy">
                     </div>
-                    <b class="portfolio-arrow" aria-hidden="true">↗</b>
+                    <b class="portfolio-arrow" aria-hidden="true">{{ app()->getLocale() === 'ar' ? '↖' : '↗' }}</b>
                 </a>
             @endforeach
         </div>
@@ -57,17 +57,17 @@
     <section class="cta-section">
         <div class="container cta-box">
             <div>
-                <div class="eyebrow">Prêt pour votre prochain succès ?</div>
+                <div class="eyebrow">{{ __('site.projects_cta_eyebrow') }}</div>
                 <h2>
-                    Vous avez une idée de produit<br>
-                    <span class="green">ou un besoin technique ?</span>
+                    {{ __('site.projects_cta_title') }}<br>
+                    <span class="green">{{ __('site.projects_cta_title_highlight') }}</span>
                 </h2>
                 <p class="cta-desc">
-                    Nous vous accompagnons du cadrage initial jusqu'au lancement en production.
+                    {{ __('site.projects_cta_desc') }}
                 </p>
             </div>
             <a class="btn btn-primary btn-big" href="{{ route('contact') }}">
-                Lancer mon projet ↗
+                {{ __('site.projects_cta_btn') }}
             </a>
         </div>
     </section>
