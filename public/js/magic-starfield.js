@@ -1,231 +1,201 @@
-// ==========================================
-// MAGIC CODE — STARFIELD + STAR CURSOR
-// Adapted from portfolio starfield.js
-// Brand: #050505 background, #35d51f neon green
-// ==========================================
+// =========================================================================
+// MAGIC CODE — REFINED AMBIENT STARFIELD & MAGICAL WAND FOLLOWER
+// High-End Luxury Dark Cosmos (Smooth 60fps, No UI Blocking, No Latency)
+// =========================================================================
 
 (function () {
     'use strict';
 
-    // ── Settings ──────────────────────────────
-    var totalObjects      = 350;
-    var maxVelocity       = 1.5;
-    var starSize          = 1;
-    var twinkleFreq       = 40000;
-    var shootingStarFreq  = 250;
-    var shootingStarVelocity = 48;
-    var shootingStarSize  = 4;
+    // Guard for reduced motion preference
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+    }
 
-    // Green palette for brand colours
-    var GREEN_BRIGHT  = 'rgba(53,213,31,';     // #35d51f — cursor cluster
-    var GREEN_MID     = 'rgba(80,230,55,';     // slightly lighter
-    var WHITE_STAR    = 'rgba(255,255,255,';   // background drift stars
-    var SHOOT_COLOR   = 'rgba(53,213,31,';     // shooting stars
-
-    // ── Mouse ─────────────────────────────────
-    var mouse = {
-        x: window.innerWidth  / 2,
-        y: window.innerHeight / 2,
-        radius: 180
-    };
-
-    // ── Custom cursor div (star glyph) ─────────
-    var cursorStar = document.createElement('div');
-    cursorStar.id = 'magic-cursor-star';
-    cursorStar.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(cursorStar);
-
-    // ── Canvas setup ──────────────────────────
     var canvas = document.getElementById('magicStarfield');
-    if (!canvas) return; // Safety guard
+    if (!canvas) return;
 
-    canvas.width  = window.innerWidth  || 1024;
-    canvas.height = window.innerHeight || 768;
     var ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-    // ── Star arrays ───────────────────────────
-    var stars        = [];
+    // ── Device & Performance Scaling ────────────────────────────────────────
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+
+    function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+        ctx.scale(dpr, dpr);
+    }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+
+    // ── Starfield Palette & Particles ───────────────────────────────────────
+    var STAR_COUNT = Math.min(130, Math.floor((width * height) / 9000));
+    var stars = [];
     var shootingStars = [];
 
-    // ── requestAnimFrame shim ─────────────────
-    var raf = window.requestAnimationFrame ||
-              window.webkitRequestAnimationFrame ||
-              window.mozRequestAnimationFrame ||
-              function (cb) { setTimeout(cb, 16); };
+    // Ambient mouse coordinates
+    var mouse = {
+        x: width / 2,
+        y: height / 2,
+        targetX: width / 2,
+        targetY: height / 2,
+        hasMoved: false
+    };
 
-    // =========================================
-    // Star constructor
-    // =========================================
+    // ── Floating Magical Cursor Particle ────────────────────────────────────
+    var cursorStar = document.getElementById('magic-cursor-star');
+    if (!cursorStar) {
+        cursorStar = document.createElement('div');
+        cursorStar.id = 'magic-cursor-star';
+        cursorStar.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(cursorStar);
+    }
+
+    // Star Class
     function Star() {
-        this.X         = Math.random() * canvas.width;
-        this.Y         = Math.random() * canvas.height;
-        this.Velocity  = Math.random() * maxVelocity;
-        this.Opacity   = ((Math.random() * 10 + 1) * 0.1);
-        this.Collected = false;
-        this.Lag       = Math.random() * 0.15 + 0.05;
-        this.isGreen   = false; // set for collected stars
-
-        this.Update = function () {
-            if (mouse.x != null && mouse.y != null) {
-                var dx = mouse.x - this.X;
-                var dy = mouse.y - this.Y;
-                var dist = Math.sqrt(dx * dx + dy * dy);
-
-                // Collect nearby stars into cursor cloud
-                if (dist < 50) {
-                    this.Collected = true;
-                    this.isGreen   = true;
-                }
-
-                if (this.Collected) {
-                    // Snake / tail cloud following cursor
-                    var tx = mouse.x + (Math.random() * 12 - 6);
-                    var ty = mouse.y + (Math.random() * 12 - 6);
-                    this.X += (tx - this.X) * this.Lag;
-                    this.Y += (ty - this.Y) * this.Lag;
-                    this.Opacity = 0.75 + Math.random() * 0.25;
-                } else {
-                    // Magnetic pull from mouse radius
-                    if (dist < mouse.radius) {
-                        var force = (mouse.radius - dist) / mouse.radius;
-                        var angle = Math.atan2(dy, dx);
-                        this.X += Math.cos(angle) * force * 2;
-                        this.Y += Math.sin(angle) * force * 2;
-                    }
-
-                    // Drift left
-                    this.X -= this.Velocity;
-
-                    if (this.X < 0) {
-                        this.X = canvas.width + 1;
-                        this.Y = Math.random() * canvas.height;
-                    }
-                    if (this.Y < 0) this.Y = canvas.height;
-                    if (this.Y > canvas.height) this.Y = 0;
-                }
-            } else {
-                this.X -= this.Velocity;
-                if (this.X < 0) {
-                    this.X = canvas.width + 1;
-                    this.Y = Math.random() * canvas.height;
-                }
-                if (this.Y < 0) this.Y = canvas.height;
-                if (this.Y > canvas.height) this.Y = 0;
-            }
-        };
-
-        this.Draw = function () {
-            var color = this.isGreen ? GREEN_BRIGHT : WHITE_STAR;
-            ctx.fillStyle = color + this.Opacity + ')';
-
-            var sz = this.Collected ? starSize + 1.5 : starSize;
-
-            if (Math.round(Math.random() * twinkleFreq) === 1 || this.Collected) {
-                ctx.fillRect(this.X, this.Y, sz + 2, sz + 2);
-            } else {
-                ctx.fillRect(this.X, this.Y, sz, sz);
-            }
-        };
+        this.reset(true);
     }
 
-    // =========================================
-    // ShootingStar constructor
-    // =========================================
+    Star.prototype.reset = function (initial) {
+        this.x = Math.random() * width;
+        this.y = initial ? Math.random() * height : -10;
+        this.size = Math.random() * 1.2 + 0.6; // 0.6px to 1.8px
+        this.baseAlpha = Math.random() * 0.5 + 0.2;
+        this.alpha = this.baseAlpha;
+        this.twinkleSpeed = Math.random() * 0.02 + 0.008;
+        this.twinkleDir = Math.random() > 0.5 ? 1 : -1;
+        this.vx = (Math.random() - 0.5) * 0.15;
+        this.vy = Math.random() * 0.25 + 0.08; // slow downwards cosmic drift
+        // Color tint: 70% diamond white, 15% warm orange, 15% electric green
+        var r = Math.random();
+        if (r > 0.85) {
+            this.colorType = 'green';
+        } else if (r > 0.70) {
+            this.colorType = 'orange';
+        } else {
+            this.colorType = 'white';
+        }
+    };
+
+    Star.prototype.update = function () {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        // Subtle twinkling
+        this.alpha += this.twinkleSpeed * this.twinkleDir;
+        if (this.alpha > this.baseAlpha + 0.25 || this.alpha > 0.9) {
+            this.twinkleDir = -1;
+        } else if (this.alpha < this.baseAlpha - 0.2 || this.alpha < 0.1) {
+            this.twinkleDir = 1;
+        }
+
+        // Gentle magnetic sway when cursor passes near (non-intrusive)
+        if (mouse.hasMoved) {
+            var dx = mouse.x - this.x;
+            var dy = mouse.y - this.y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 120 && dist > 1) {
+                var force = (120 - dist) / 120 * 0.6;
+                this.x += (dx / dist) * force;
+                this.y += (dy / dist) * force;
+            }
+        }
+
+        // Wrap boundaries
+        if (this.y > height + 10) this.reset(false);
+        if (this.x < -10) this.x = width + 10;
+        if (this.x > width + 10) this.x = -10;
+    };
+
+    Star.prototype.draw = function () {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        var a = Math.max(0, Math.min(1, this.alpha));
+        if (this.colorType === 'green') {
+            ctx.fillStyle = 'rgba(53, 213, 31, ' + (a * 0.9) + ')';
+        } else if (this.colorType === 'orange') {
+            ctx.fillStyle = 'rgba(255, 120, 20, ' + (a * 0.9) + ')';
+        } else {
+            ctx.fillStyle = 'rgba(255, 255, 255, ' + a + ')';
+        }
+        ctx.fill();
+    };
+
+    // Shooting Star Class (Rare & Elegant)
     function ShootingStar() {
-        this.X      = canvas.width + 200;
-        this.Y      = Math.random() * canvas.height;
-        this.Length = 900;
-
-        this.Update = function () {
-            this.X -= shootingStarVelocity;
-        };
-
-        this.Draw = function () {
-            for (var i = 0; i < this.Length; i++) {
-                var op = Math.max(0, 0.75 - 0.001 * i);
-                ctx.fillStyle = SHOOT_COLOR + op + ')';
-                ctx.fillRect(this.X + i, this.Y, shootingStarSize, shootingStarSize);
-            }
-        };
+        this.reset();
     }
 
-    // =========================================
-    // Init
-    // =========================================
-    function init() {
-        for (var i = 0; i < totalObjects; i++) {
-            var star = new Star();
-            if (i < 60) {
-                star.Collected = true;
-                star.isGreen   = true;
-                star.Lag       = Math.random() * 0.15 + 0.05;
-                star.X         = mouse.x;
-                star.Y         = mouse.y;
-            }
-            stars.push(star);
-        }
+    ShootingStar.prototype.reset = function () {
+        this.x = Math.random() * (width * 0.8) + (width * 0.2);
+        this.y = Math.random() * (height * 0.4);
+        this.len = Math.random() * 80 + 70;
+        this.speed = Math.random() * 12 + 10;
+        this.angle = Math.PI / 4 + (Math.random() - 0.5) * 0.2; // roughly 45 deg downwards
+        this.vx = -Math.cos(this.angle) * this.speed;
+        this.vy = Math.sin(this.angle) * this.speed;
+        this.alpha = 1;
+        this.decay = Math.random() * 0.02 + 0.015;
+    };
+
+    ShootingStar.prototype.update = function () {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.alpha -= this.decay;
+    };
+
+    ShootingStar.prototype.draw = function () {
+        if (this.alpha <= 0) return;
+        var tailX = this.x - Math.cos(this.angle) * -this.len;
+        var tailY = this.y - Math.sin(this.angle) * this.len;
+
+        var grad = ctx.createLinearGradient(this.x, this.y, tailX, tailY);
+        grad.addColorStop(0, 'rgba(255, 255, 255, ' + this.alpha + ')');
+        grad.addColorStop(0.35, 'rgba(255, 106, 0, ' + (this.alpha * 0.85) + ')');
+        grad.addColorStop(0.70, 'rgba(53, 213, 31, ' + (this.alpha * 0.75) + ')');
+        grad.addColorStop(1, 'rgba(53, 213, 31, 0)');
+
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(tailX, tailY);
+        ctx.stroke();
+    };
+
+    // Initialize stars
+    for (var i = 0; i < STAR_COUNT; i++) {
+        stars.push(new Star());
     }
 
-    // =========================================
-    // Draw loop
-    // =========================================
-    function draw() {
-        raf(draw);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Rare shooting star timer
+    var lastShootingStarTime = Date.now();
+    var nextShootingStarInterval = 8000 + Math.random() * 10000;
 
-        for (var f = 0; f < stars.length; f++) {
-            stars[f].Update();
-            stars[f].Draw();
-        }
-        for (var g = 0; g < shootingStars.length; g++) {
-            shootingStars[g].Update();
-            shootingStars[g].Draw();
-        }
-    }
-
-    // =========================================
-    // Update loop (spawns shooting stars)
-    // =========================================
-    function update() {
-        if (Math.round(Math.random() * shootingStarFreq) === 1) {
-            shootingStars.push(new ShootingStar());
-        }
-        for (var f = shootingStars.length - 1; f >= 0; f--) {
-            if (shootingStars[f].X < -1200) {
-                shootingStars.splice(f, 1);
-            }
-        }
-    }
-
-    // ── Start ─────────────────────────────────
-    init();
-    setInterval(update, 30);
-    raf(draw);
-
-    // ── Event listeners ───────────────────────
+    // ── Mouse Listeners ─────────────────────────────────────────────────────
     document.addEventListener('mousemove', function (e) {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-
-        // Move CSS cursor glyph
-        cursorStar.style.transform = 'translate(' + (e.clientX - 10) + 'px, ' + (e.clientY - 10) + 'px)';
-        cursorStar.style.opacity   = '1';
-    });
+        mouse.targetX = e.clientX;
+        mouse.targetY = e.clientY;
+        if (!mouse.hasMoved) {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+            mouse.hasMoved = true;
+            cursorStar.style.opacity = '1';
+        }
+    }, { passive: true });
 
     document.addEventListener('mouseleave', function () {
         cursorStar.style.opacity = '0';
     });
 
     document.addEventListener('mouseenter', function () {
-        cursorStar.style.opacity = '1';
-    });
-
-    // Click burst — flash cursor star
-    document.addEventListener('mousedown', function () {
-        cursorStar.classList.add('magic-cursor--click');
-    });
-    document.addEventListener('mouseup', function () {
-        cursorStar.classList.remove('magic-cursor--click');
+        if (mouse.hasMoved) cursorStar.style.opacity = '1';
     });
 
     // Hover interactive elements
@@ -233,17 +203,61 @@
         if (e.target && e.target.closest('a, button, input, textarea, select, .btn, .filter-btn, [role="button"]')) {
             cursorStar.classList.add('magic-cursor--hover');
         }
-    });
+    }, { passive: true });
+
     document.addEventListener('mouseout', function (e) {
         if (e.target && e.target.closest('a, button, input, textarea, select, .btn, .filter-btn, [role="button"]')) {
             cursorStar.classList.remove('magic-cursor--hover');
         }
+    }, { passive: true });
+
+    document.addEventListener('mousedown', function () {
+        cursorStar.classList.add('magic-cursor--click');
     });
 
-    window.addEventListener('resize', function () {
-        canvas.width  = window.innerWidth;
-        canvas.height = window.innerHeight;
+    document.addEventListener('mouseup', function () {
+        cursorStar.classList.remove('magic-cursor--click');
     });
 
+    // ── Animation Loop (Buttery Smooth 60fps) ───────────────────────────────
+    function animate() {
+        requestAnimationFrame(animate);
+
+        // Smooth cursor interpolation (lerp)
+        if (mouse.hasMoved) {
+            mouse.x += (mouse.targetX - mouse.x) * 0.2;
+            mouse.y += (mouse.targetY - mouse.y) * 0.2;
+
+            // Offset slightly by 14px so it floats beside pointer without blocking click
+            cursorStar.style.transform = 'translate3d(' + (mouse.x + 12) + 'px, ' + (mouse.y + 12) + 'px, 0)';
+        }
+
+        ctx.clearRect(0, 0, width, height);
+
+        // Draw and update stars
+        for (var s = 0; s < stars.length; s++) {
+            stars[s].update();
+            stars[s].draw();
+        }
+
+        // Spawn shooting star if interval passed
+        var now = Date.now();
+        if (now - lastShootingStarTime > nextShootingStarInterval) {
+            shootingStars.push(new ShootingStar());
+            lastShootingStarTime = now;
+            nextShootingStarInterval = 10000 + Math.random() * 14000;
+        }
+
+        // Draw and update shooting stars
+        for (var j = shootingStars.length - 1; j >= 0; j--) {
+            var ss = shootingStars[j];
+            ss.update();
+            ss.draw();
+            if (ss.alpha <= 0) {
+                shootingStars.splice(j, 1);
+            }
+        }
+    }
+
+    animate();
 })();
-

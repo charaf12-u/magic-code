@@ -6,26 +6,26 @@
         <div class="container hero-grid">
             <div class="hero-copy reveal">
                 <div class="eyebrow">
-                    <span class="pulse"></span> Freelance Digital Studio · Maroc
+                    <span class="pulse"></span> DISPONIBLE POUR NOUVEAUX PROJETS · MAROC & INTERNATIONAL
                 </div>
                 <h1>
-                    On transforme vos idées en <span class="green">expériences digitales.</span>
+                    Nous concevons des produits digitaux d'exception qui <span class="green">accélèrent votre croissance.</span>
                 </h1>
                 <p class="hero-lead">
-                    Sites web sur mesure, applications mobiles, data analytics et automatisation intelligente. Une expertise technique de bout en bout pour concevoir, bâtir et propulser vos projets.
+                    Studio digital indépendant spécialisé en ingénierie web moderne, applications mobiles haute performance et intégration IA. De l'architecture technique au déploiement sécurisé, nous transformons vos ambitions en réalité.
                 </p>
                 <div class="hero-actions">
-                    <a class="btn btn-primary" href="{{ route('contact') }}">
+                    <a class="btn btn-primary btn-big" href="{{ route('contact') }}">
                         Démarrer un projet <span>↗</span>
                     </a>
-                    <a class="btn btn-ghost" href="{{ route('projects') }}">
-                        Explorer le portfolio
+                    <a class="btn btn-ghost btn-big" href="{{ route('projects') }}">
+                        Explorer nos réalisations
                     </a>
                 </div>
                 <div class="trust-row">
-                    <span>✓ Code propre & documenté</span>
-                    <span>✓ Performance & SEO natif</span>
-                    <span>✓ Accompagnement agile</span>
+                    <span><b class="check" style="color: var(--status-green);">✓</b> Cession 100% code propriétaire</span>
+                    <span><b class="check" style="color: var(--status-green);">✓</b> Architecture scalable & sécurisée</span>
+                    <span><b class="check" style="color: var(--status-green);">✓</b> Accompagnement direct sur WhatsApp</span>
                 </div>
             </div>
 
@@ -40,21 +40,43 @@
         </div>
     </section>
 
+    <!-- Impact Metrics Band -->
+    <section class="section dark-band" style="padding: 44px 0;">
+        <div class="container stats">
+            <div>
+                <strong>4 Semaines</strong>
+                <span>Délai moyen de livraison MVP</span>
+            </div>
+            <div>
+                <strong>99.9%</strong>
+                <span>Disponibilité & Uptime serveurs</span>
+            </div>
+            <div>
+                <strong>100%</strong>
+                <span>Code audité & sans dette technique</span>
+            </div>
+            <div>
+                <strong>5.0 ★</strong>
+                <span>Satisfaction client certifiée</span>
+            </div>
+        </div>
+    </section>
+
     <!-- Ticker Banner -->
     <section class="ticker" aria-hidden="true">
         <div>
-            <span>LARAVEL</span> <i>✦</i>
+            <span>LARAVEL 11</span> <i>✦</i>
             <span>MOBILE APPS</span> <i>✦</i>
             <span>DATA ENGINEERING</span> <i>✦</i>
-            <span>AI & LLMs</span> <i>✦</i>
-            <span>AUTOMATION</span> <i>✦</i>
-            <span>SEO OPTIMIZATION</span> <i>✦</i>
-            <span>LARAVEL</span> <i>✦</i>
+            <span>AI AGENTS & LLMs</span> <i>✦</i>
+            <span>BUSINESS AUTOMATION</span> <i>✦</i>
+            <span>TECHNICAL SEO</span> <i>✦</i>
+            <span>LARAVEL 11</span> <i>✦</i>
             <span>MOBILE APPS</span> <i>✦</i>
             <span>DATA ENGINEERING</span> <i>✦</i>
-            <span>AI & LLMs</span> <i>✦</i>
-            <span>AUTOMATION</span> <i>✦</i>
-            <span>SEO OPTIMIZATION</span> <i>✦</i>
+            <span>AI AGENTS & LLMs</span> <i>✦</i>
+            <span>BUSINESS AUTOMATION</span> <i>✦</i>
+            <span>TECHNICAL SEO</span> <i>✦</i>
         </div>
     </section>
 
@@ -63,8 +85,8 @@
         <div class="container">
             <div class="section-head">
                 <div>
-                    <div class="eyebrow">01 · Nos expertises</div>
-                    <h2>Tout ce qu'il faut pour <span class="green">passer au digital.</span></h2>
+                    <div class="eyebrow">01 · EXPERTISES & SOLUTIONS</div>
+                    <h2>Une maîtrise technique complète pour <span class="green">vos défis les plus ambitieux.</span></h2>
                 </div>
                 <a class="text-link" href="{{ route('services') }}">
                     Toutes nos expertises ↗
@@ -91,42 +113,42 @@
     <section class="section dark-band">
         <div class="container two-col">
             <div>
-                <div class="eyebrow">02 · Pourquoi Magic Code</div>
+                <div class="eyebrow">02 · ENGAGEMENTS & MÉTHODE</div>
                 <h2>
-                    Pas juste du code.<br>
-                    <span class="green">Une vraie solution métier.</span>
+                    Pourquoi les entreprises exigeantes<br>
+                    <span class="green">choisissent Magic Code.</span>
                 </h2>
                 <p class="section-subtext">
-                    Nous ne nous contentons pas d'aligner des lignes de code : nous concevons des produits fiables, maintenables et orientés résultats pour votre business.
+                    Pas de buzzwords ni d'intermédiaires inutiles : une équipe d'ingénieurs passionnés dédiée à la réussite mesurable et à la pérennité technique de votre produit.
                 </p>
             </div>
             <div class="feature-list">
                 <div>
                     <b>01</b>
                     <div>
-                        <strong>Simple & Intuitif</strong>
-                        <span>Des interfaces épurées et sans friction que vos utilisateurs adoptent immédiatement.</span>
+                        <strong>Architecture Évolutive & Sécurité</strong>
+                        <span>Base de code modulaire Laravel, typage rigoureux, API REST/GraphQL et couverture de tests automatisés.</span>
                     </div>
                 </div>
                 <div>
                     <b>02</b>
                     <div>
-                        <strong>Haute Performance</strong>
-                        <span>Des temps de chargement éclair, un code optimisé et des architectures scalables.</span>
+                        <strong>Haute Performance & SEO Natif</strong>
+                        <span>Temps de chargement inférieurs à 1 seconde, optimisation Core Web Vitals et indexation technique irréprochable.</span>
                     </div>
                 </div>
                 <div>
                     <b>03</b>
                     <div>
-                        <strong>Architecture Propre</strong>
-                        <span>Une base de code modulaire et documentée, facile à faire grandir avec votre activité.</span>
+                        <strong>Communication Directe & Suivi Hebdomadaire</strong>
+                        <span>Accès direct aux développeurs seniors via groupe dédié WhatsApp & Slack, points de sprint réguliers et transparence totale.</span>
                     </div>
                 </div>
                 <div>
                     <b>04</b>
                     <div>
-                        <strong>Mesurable & ROI</strong>
-                        <span>Suivi précis des métriques, télémétrie et analytics intégrés dès la conception.</span>
+                        <strong>Mesure d'Impact & ROI Garanti</strong>
+                        <span>Intégration d'outils d'analytics temps réel et d'indicateurs de performance clés dès la phase de conception.</span>
                     </div>
                 </div>
             </div>
@@ -138,8 +160,8 @@
         <div class="container">
             <div class="section-head">
                 <div>
-                    <div class="eyebrow">03 · Réalisations</div>
-                    <h2>Des projets qui <span class="green">font la différence.</span></h2>
+                    <div class="eyebrow">03 · RÉALISATIONS SÉLECTIONNÉES</div>
+                    <h2>Des projets concrets qui <span class="green">démontrent notre exigence.</span></h2>
                 </div>
                 <a class="text-link" href="{{ route('projects') }}">
                     Explorer tout le portfolio ↗
@@ -169,31 +191,31 @@
         <div class="container">
             <div class="section-head">
                 <div>
-                    <div class="eyebrow">04 · Notre méthode</div>
-                    <h2>De l'idée au <span class="green">produit en production.</span></h2>
+                    <div class="eyebrow">04 · NOTRE MÉTHODOLOGIE</div>
+                    <h2>Un processus transparent, <span class="green">du cadrage à la mise en production.</span></h2>
                 </div>
             </div>
 
             <div class="process-grid">
                 <div>
                     <span>01</span>
-                    <h3>Comprendre</h3>
-                    <p>Immersion dans vos objectifs métier, vos utilisateurs cibles, vos flux et vos contraintes techniques.</p>
+                    <h3>Immersion & Cadrage</h3>
+                    <p>Audit approfondi de vos besoins métier, modélisation des flux utilisateurs et spécifications techniques sans ambiguïté.</p>
                 </div>
                 <div>
                     <span>02</span>
-                    <h3>Concevoir</h3>
-                    <p>Définition de l'UX, architecture technique, modélisation de base de données et validation du périmètre.</p>
+                    <h3>Architecture & UX</h3>
+                    <p>Design de l'interface utilisateur sur mesure, schéma relationnel de données et validation des maquettes interactives.</p>
                 </div>
                 <div>
                     <span>03</span>
-                    <h3>Construire</h3>
-                    <p>Développement itératif, revues de code, tests unitaires et intégration continue sans compromis.</p>
+                    <h3>Développement Itératif</h3>
+                    <p>Développement par sprints courts, revues de code systématiques et environnement de pré-production accessible en direct.</p>
                 </div>
                 <div>
                     <span>04</span>
-                    <h3>Déployer & Scaler</h3>
-                    <p>Mise en production, monitoring, optimisation SEO, tracking analytics et accompagnement post-lancement.</p>
+                    <h3>Déploiement & Garantie</h3>
+                    <p>Mise en production sécurisée, configuration CDN/SSL, formation de vos équipes et 30 jours de garantie corrective inclus.</p>
                 </div>
             </div>
         </div>
@@ -204,12 +226,12 @@
         <div class="container">
             <div class="section-head">
                 <div>
-                    <div class="eyebrow">05 · Retours d'expérience</div>
+                    <div class="eyebrow">05 · TÉMOIGNAGES CLIENTS</div>
                     <h2>Ce que disent <span class="green">nos partenaires.</span></h2>
                 </div>
                 <div class="rating-badge">
                     <span class="stars">★★★★★</span>
-                    <b>5.0 / 5.0 · Satisfaction client</b>
+                    <b>5.0 / 5.0 · Satisfaction client certifiée</b>
                 </div>
             </div>
 
@@ -263,13 +285,13 @@
     <section class="section faq-section" id="faq">
         <div class="container faq-grid-wrap">
             <div class="faq-head">
-                <div class="eyebrow">06 · Foire aux questions</div>
+                <div class="eyebrow">06 · QUESTIONS FRÉQUENTES</div>
                 <h2>Tout ce que vous devez <span class="green">savoir avant de démarrer.</span></h2>
                 <p class="prose">
-                    Vous avez une question spécifique qui n'est pas listée ici ? Contactez-nous directement via WhatsApp ou formulaire.
+                    Vous avez un projet spécifique avec des contraintes techniques particulières ? Échangeons directement sur WhatsApp ou par email pour un cadrage sur mesure.
                 </p>
                 <a class="btn btn-ghost" href="{{ route('contact') }}">
-                    Poser une autre question ↗
+                    Poser une question spécifique ↗
                 </a>
             </div>
 
@@ -329,17 +351,17 @@
     <section class="cta-section">
         <div class="container cta-box">
             <div>
-                <div class="eyebrow">07 · Let's build together</div>
+                <div class="eyebrow">07 · NOUVEAU PROJET</div>
                 <h2>
                     Votre prochaine idée mérite<br>
                     <span class="green">une réalisation d'exception.</span>
                 </h2>
                 <p class="cta-desc">
-                    Vous avez un projet en tête ou un besoin d'automatisation ? Échangeons dès aujourd'hui.
+                    Échangeons dès aujourd'hui sur votre vision et recevez une proposition technique et tarifaire sous 24 heures ouvrées.
                 </p>
             </div>
             <a class="btn btn-primary btn-big" href="{{ route('contact') }}">
-                Parler de mon projet ↗
+                Démarrer mon projet ↗
             </a>
         </div>
     </section>
